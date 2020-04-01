@@ -1,4 +1,4 @@
 # active-mixup
 Code for Active Mixup in 2020 CVPR
 
-Release soon
+Code and model will be released soon.
