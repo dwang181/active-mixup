@@ -27,34 +27,34 @@ Code for Active Mixup in 2020 CVPR
 
 
 ## Note:
-For 00_data_prep .sh or .py
+### For 00_data_prep .sh or .py
 1. Specify the number of real_images with 1000, 2000, ...
 2. The code will generate combination indieces pool. To save the space, the dumped pkl only stores paths instead of arrays.
 3. The real images will be dumped into ./images folder.
 
-For 01_data_prep .sh or .py
+### For 01_data_prep .sh or .py
 1. Specify checkpoint in py file for teacher query model. For example, checkpoint = torch.load('./checkpoint/cifar10_vgg16_teacher.pth')
 2. In my_loader, specify real_img_query_loader with the pkl of real images. For example, datainfo = pickle.load(open('./images/cifar10_real_images_1000.pkl', 'rb'))
 3. The code will generate real image query results and dump the results into query folder ./images/query. For example, ./images/query/cifar10_query_label_###.pkl  
 
-For 10_data_prep .sh or .py
+### For 10_data_prep .sh or .py
 1. Specify checkpoint in py file for student query model. For example, checkpoint = torch.load('./active_student_models/cifar10_vgg_student_model_1000.pth'). Note that you need at least one student model for query.
 2. Specify the number of selected mixed images for each stage. For example, local_indices = np.argsort(unc_tags)[:10000], which implies that we select top uncertain 10K images. 
 3. In my loder, specify mix_img_query_loader with the pkl of mixed image candidate pool. For example,  datainfo = pickle.load(open('./images/cifar10_mix_images_499000.pkl', 'rb')).
 4. The code will generate two sets, including left unlabeled images and selected images. To save the space, unlabeled images are dumped in the format of paths. Selected images here haven't queried teacher model yet.
 
-For 11_data_prep .sh or .py
+### For 11_data_prep .sh or .py
 1. Specify checkpoint in py file for teacher query model. For example, checkpoint = torch.load('./checkpoint/cifar10_vgg16_teacher.pth') 
 2. Specify current labeled images. For example, datainfo = pickle.load(open('./images/query/cifar10_query_label_1000.pkl', 'rb')) 
 3. In my loder, specify active_query_loader with the pkl of selected images from 10_data_prep.py. For example, datainfo = pickle.load(open('./images/query/cifar10_query_new_label_10000.pkl', 'rb')).
 4. The code will concatenate the new query labeled images to the previously obtained labeled images, dumping the new query set. 
 
-For active_train .sh or .py
+### For active_train .sh or .py
 1. Specify lr, model_out, and log generation path. 
 2. In my loader, specify active_learning_loader with obtained training set. For example, datainfo = pickle.load(open('./images/query/cifar10_query_label_1000.pkl', 'rb')).
 3. The code will generate a well-trained model with current training set.
 
-P.S.
+### P.S.
 1. The first set of real images are randomly selected and training process is stochastic, so the training accuracies can show variations (maybe +/- 2%).
 2. Active learning is an incremental process, so the previous student model can affect the next student training. Some variation can occur.
 3. You may try the example with run_00.sh and run_01.sh for Stage 0 and Stage 1 with 1000 images. Please remember to modify active_learning_loader in my loader after running run_00.sh for new training with run_01.sh.
