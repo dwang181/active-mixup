@@ -12,7 +12,6 @@ import argparse
 
 import numpy as np
 
-#from my_loader import active_learning_loader
 from my_loader import active_learning_loader
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
@@ -24,12 +23,8 @@ parser.add_argument('--model_out', required=True, type=str, help='output path')
 parser.add_argument('--resume', action='store_true', help='Resume training')
 opt = parser.parse_args()
 
-
-
-
 cuda = torch.cuda.is_available()
 torch.backends.cudnn.benchmark = False
-
 
 # Data
 print('==> Preparing data..')
