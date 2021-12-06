@@ -8,16 +8,19 @@ Code for Active Mixup in 2020 CVPR
 
 ## Run:
 ************* Stage 0 ********************************
+
 1. 00_data_prep.sh (randomly select real images and mix them to a candidate pool)
 2. 01_data_prep.sh (query teacher model and obtain the first real image training set)
 3. active_train.sh (train the model with real images data)
 
 ************* Stage 1 ********************************
+
 4. 10_data_prep.sh (query student network)
 5. 11_data_prep.sh (query teacher model and extend training data)
 6. active_rain.sh  (train the model with new dataset)
 
 ************* Stage 2 (repeat the above) *************
+
 7. 10_data_prep.sh
 8. 11_data_prep.sh
 9. active_train.sh
