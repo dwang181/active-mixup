@@ -57,7 +57,7 @@ def main():
     
 
 ############################################################
-############# Modify Current Student Model #################
+############# Modify It To Current Student Model #################
 
     checkpoint = torch.load('./active_student_models/cifar10_vgg_student_model_1000.pth')
     model.load_state_dict(checkpoint)
