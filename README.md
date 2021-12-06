@@ -1,12 +1,12 @@
-## Active-mixup
+# Active-mixup
 Code for Active Mixup in 2020 CVPR
 
-# Preparation:
+## Preparation:
 1. You need a well-trained teacher model with sufficient accuracy, such as top-1 ~93% for CIFAR-10.
 2. For CIFAR-10, convert CIFAR10 Data to PNG or JPG format. (https://github.com/knjcode/cifar2png.git) For example, run git clone https://github.com/knjcode/cifar2png.git at current directory. Follow the instruction to install it and make sure all converted png images are stored in active_mixup/cifar2png/cifar10png/ , which contains train and test folders.
 3. Locate train data directory and specify root in 00_data_prep.sh with it. For example, with downloaded cifar10 above, we use root=./cifar2png/cifar10png/train .
 
-# Run:
+## Run:
 ************* Stage 0 ********************************
 1. 00_data_prep.sh (randomly select real images and mix them to a candidate pool)
 2. 01_data_prep.sh (query teacher model and obtain the first real image training set)
@@ -26,7 +26,7 @@ Code for Active Mixup in 2020 CVPR
 ...
 
 
-# Note:
+## Note:
 For 00_data_prep .sh or .py
 1. Specify the number of real_images with 1000, 2000, ...
 2. The code will generate combination indieces pool. To save the space, the dumped pkl only stores paths instead of arrays.
