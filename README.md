@@ -68,5 +68,6 @@ If you have any questions, please feel free to contact me. Thanks very much for 
 daniel.wang@knights.ucf.edu
 
 ## Citation
+```yaml
 Wang, D., Li, Y., Wang, L., & Gong, B. (2020). Neural networks are more productive teachers than human raters: Active mixup for data-efficient knowledge distillation from a blackbox model. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 1498-1507).
-
+```
